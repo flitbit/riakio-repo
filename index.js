@@ -1,4 +1,1 @@
-'use strict';
-
-var riakio = require('riakio')
-;
+module.exports = require('./lib');

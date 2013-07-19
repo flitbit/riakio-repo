@@ -1,27 +1,32 @@
 {
-	"name": "riakio-repo",
-	"version": "0.1.0",
-	"author": "Eli Mumford <elimumford@gmail.com>",
-	"description": "A repository pattern implimented over riakio",
-	"keywords": ["repository", "riak", "riakio"],
-	"main": "index.js",
-	"directories": {
-		"example": "examples",
-		"test": "test"
-	},
-	"scripts": {
-		"test": "mocha -R spec"
-	},
-	"dependencies": {
-		"riakio": "git://github.com/flitbit/riakio.git#develop"
-	 },
-	"devDependencies": {
-			"expect.js": "~0.2.x",
-			"mocha": "~1.10.x"
-	},
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/netsteps/riakio-repo"
-	}
+  "name": "riakio-repo",
+  "version": "0.1.0",
+  "author": "Eli Mumford <elimumford@gmail.com>",
+  "description": "A repository pattern implimented over riakio",
+  "keywords": [
+    "repository",
+    "riak",
+    "riakio"
+  ],
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "dependencies": {
+    "riakio": "git://github.com/flitbit/riakio.git#develop",
+    "dbc.js": "~1.0.1"
+  },
+  "devDependencies": {
+    "expect.js": "~0.2.x",
+    "mocha": "~1.10.x"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/netsteps/riakio-repo"
+  }
 }
