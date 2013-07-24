@@ -4,5 +4,5 @@ var lib = require('./lib')
 
 Object.defineProperties(module.exports, {
 	version: { value: pkg.version, enumerable: true }
-	Repo: { value: lib, enumerable: true }
+	, Repo: { value: lib, enumerable: true }
 });
