@@ -20,7 +20,9 @@
     "riakio": "git://github.com/flitbit/riakio.git#develop",
     "dbc.js": "~1.0.1",
     "hooked": "~0.1.3",
-    "jsonschema": "~0.4.0"
+    "jsonschema": "~0.4.0",
+    "winston": "~0.7.2",
+    "webflow": "git://github.com/flitbit/webflow.git"
   },
   "devDependencies": {
     "expect.js": "~0.2.x",
