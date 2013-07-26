@@ -31,6 +31,6 @@ r.createMany(d, function(err, res){
 	if(err) {
 		log.error(util.inspect(err, true, 99));
 	} else {
-		log.info(util.inspect(res, true, 99));
+		log.info(util.inspect(res, false, 99));
 	}
 });
