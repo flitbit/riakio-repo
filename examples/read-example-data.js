@@ -31,13 +31,3 @@ r.get('10734133@N02_9032192043', function(err, res){
 		log.info(util.inspect(res, false, 99));
 	}
 });
-
-//{ "id": "8621325545", "owner": "51225230@N03", "secret": "dd4a27c3a1", "server": "8116", "farm": 9, "title": "st ives", "ispublic": 1, "isfriend": 0, "isfamily": 0},
-r.get('51225230@N03_8621325545', function(err, res){
-	if(err) {
-		log.error(err.stack);
-	} else {
-		log.info(util.inspect(res, false, 99));
-	}
-});
-
