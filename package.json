@@ -17,12 +17,12 @@
     "test": "mocha -R spec"
   },
   "dependencies": {
-    "riakio": "git://github.com/flitbit/riakio.git#develop",
+    "riakio": "~0.1.x",
     "dbc.js": "~1.0.1",
     "hooked": "~0.1.3",
     "jsonschema": "~0.4.0",
     "winston": "~0.7.2",
-    "webflow": "git://github.com/flitbit/webflow.git"
+    "webflow": "~0.1.1"
   },
   "devDependencies": {
     "expect.js": "~0.2.x",

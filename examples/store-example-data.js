@@ -1,7 +1,7 @@
 var util = require('util')
 , winston = require('winston')
 , data = require('../node_modules/riakio/examples/practice-data')
-, repo = require('..')
+, repo = require('../lib/repo')
 , riakio = require('riakio')
 ;
 
@@ -16,15 +16,21 @@ riakio({servers: {
 var log = new (winston.Logger)({
 	transports: [new (winston.transports.Console)({ level: 'info' })]
 })
-, r = new repo({ bucket: 'flikr-photos', server: {name: 'dev' }, log: log })
+, r = new repo({ bucket: 'flikr-photos'
+	, server: {name: 'dev' }
+	, calculateKey: function(item) {
+			return ''.concat(item.owner, '_', item.id);
+		}
+	, log: log })
 ;
 
-data.forEach(function(ff) {
-	r.create(ff, function(err, res){
-		if(err) {
-			log.error(util.inspect(err, true, 99));
-		} else {
-			log.info(util.inspect(res, true, 99));
-		}
-	});
+var d = data.map(function(el) { return { value: el }; })
+;
+
+r.createMany(d, function(err, res){
+	if(err) {
+		log.error(util.inspect(err, true, 99));
+	} else {
+		log.info(util.inspect(res, true, 99));
+	}
 });
