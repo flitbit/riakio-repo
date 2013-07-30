@@ -29,7 +29,7 @@ var d = data.slice(0, 500).map(function(el) { return { value: el }; })
 
 r.createMany(d, function(err, res){
 	if(err) {
-		log.error(util.inspect(err, true, 99));
+		log.error(err.stack);
 	} else {
 		log.info(util.inspect(res, false, 99));
 	}
