@@ -27,10 +27,23 @@ var log = new (winston.Logger)({
 var d = data.slice(0, 500).map(function(el) { return { value: el }; })
 ;
 
-r.createMany(d, function(err, res){
+var rop = r.createMany(d);
+rop.on('data', function(err, res) {
 	if(err) {
-		log.error(err.stack);
+		log.error('Data event recieved Error: '.concat(util.inspect(res, false, 99), '\n', err.stack));
 	} else {
-		log.info(util.inspect(res, false, 99));
+		log.info('Data event recieved Response: '.concat(util.inspect(res, false, 99)));
 	}
 });
+rop.on('error', function(err, res) {
+	if(err) {
+		log.error('Error event recieved Error: '.concat(util.inspect(res, false, 99), '\n', err.stack));
+	} else {
+		log.info('Error event recieved Response: '.concat(util.inspect(res, false, 99)));
+	}
+});
+rop.on('done', function() {
+	log.info('!!!!!!!!!!!!!! DONE !!!!!!!!!!!!!!');
+});
+
+rop.exec();
