@@ -24,13 +24,26 @@ var log = new (winston.Logger)({
 	, log: log })
 ;
 
-var d = data.slice(0, 500).map(function(el) { return { value: el }; })
+var d = data.slice(0, 500).map(function(el) { return { key: ''.concat(el.owner, '_', el.id) }; })
 ;
 
-r.deleteMany(d, function(err, res){
+var rop = r.deleteMany(d);
+rop.on('data', function(err, res) {
 	if(err) {
-		log.error(util.inspect(err, true, 99));
+		log.error('Data event recieved Error: '.concat(util.inspect(res, false, 99), '\n', err.stack));
 	} else {
-		log.info(util.inspect(res, false, 99));
+		log.info('Data event recieved Response: '.concat(util.inspect(res, false, 99)));
 	}
 });
+rop.on('error', function(err, res) {
+	if(err) {
+		log.error('Error event recieved Error: '.concat(util.inspect(res, false, 99), '\n', err.stack));
+	} else {
+		log.info('Error event recieved Response: '.concat(util.inspect(res, false, 99)));
+	}
+});
+rop.on('done', function() {
+	log.info('!!!!!!!!!!!!!! DONE !!!!!!!!!!!!!!');
+});
+
+rop.exec();
