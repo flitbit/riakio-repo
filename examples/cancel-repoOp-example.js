@@ -25,6 +25,7 @@ var log = new (winston.Logger)({
 ;
 
 var d = data.slice(0, 50).map(function(el) { return { key: ''.concat(el.owner, '_', el.id) }; })
+, count = 0
 ;
 
 r.delMany(d, function(err, res) {
@@ -36,6 +37,7 @@ r.delMany(d, function(err, res) {
 		} else {
 			log.info('EVENT: DATA: Response: '.concat(util.inspect(res, false, 99)));
 		}
+		if(++count == 2) { op.cancel(); }
 	});
 
 	op.on('error', function(err, res) {
@@ -47,11 +49,11 @@ r.delMany(d, function(err, res) {
 	});
 
 	op.on('canceled', function() {
-		log.info('EVENT: CANCELED');
+		log.info('EVENT: CANCELED: Count == '.concat(count, ' '));
 	});
 
 	op.on('done', function() {
-		log.info('EVENT: DONE');
+		log.info('EVENT: DONE: FinalCount == '.concat(count, ' '));
 	});
 
 });
