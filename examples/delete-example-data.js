@@ -24,7 +24,7 @@ var log = new (winston.Logger)({
 	, log: log })
 ;
 
-var d = data.slice(0, 500).map(function(el) { return { key: ''.concat(el.owner, '_', el.id) }; })
+var d = data.slice(0, 50).map(function(el) { return { key: ''.concat(el.owner, '_', el.id) }; })
 ;
 
 var rop = r.deleteMany(d);

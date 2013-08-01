@@ -23,8 +23,8 @@ var log = new (winston.Logger)({
 	, log: log })
 ;
 
-//{ "id": "9032192043", "owner": "10734133@N02", "secret": "e17ea45db8", "server": "7312", "farm": 8, "title": "the blue basket", "ispublic": 1, "isfriend": 0, "isfamily": 0},
-r.get('10734133@N02_9032192043', function(err, res){
+//{ id: '9079434148',  owner: '16257364@N00',  secret: '24a576e406',  server: '5501',  farm: 6,  title: '~',  ispublic: 1,  isfriend: 0,  isfamily: 0 }
+r.get('16257364@N00_9079434148', function(err, res){
 	if(err) {
 		log.error(err.stack);
 	} else {
