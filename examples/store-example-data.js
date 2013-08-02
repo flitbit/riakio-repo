@@ -32,7 +32,7 @@ r.createMany(d, function(err, res) {
 
 	op.on('data', function(err, res) {
 		if(err) {
-			log.error('EVENT: DATA: Error: '.concat(util.inspect(res, false, 99), '\n', err.stack));
+			log.error('EVENT: DATA: Error: '.concat(util.inspect(err, false, 99), '\nStack: ', err.stack));
 		} else {
 			log.info('EVENT: DATA: Response: '.concat(util.inspect(res, false, 99)));
 		}
@@ -40,18 +40,26 @@ r.createMany(d, function(err, res) {
 
 	op.on('error', function(err, res) {
 		if(err) {
-			log.error('EVENT: ERROR: Error: '.concat(util.inspect(res, false, 99), '\n', err.stack));
+			log.error('EVENT: ERROR: Error: '.concat(util.inspect(err, false, 99), '\nStack: ', err.stack));
 		} else {
 			log.info('EVENT: ERROR: Response: '.concat(util.inspect(res, false, 99)));
 		}
 	});
 
-	op.on('canceled', function() {
-		log.info('EVENT: CANCELED');
+	op.on('canceled', function(err, res) {
+		if(err) {
+			log.error('EVENT: CANCELED: Error: '.concat(util.inspect(err, false, 99), '\nStack: ', err.stack));
+		} else {
+			log.info('EVENT: CANCELED: Response: '.concat(util.inspect(res, false, 99)));
+		}
 	});
 
-	op.on('done', function() {
-		log.info('EVENT: DONE');
+	op.on('done', function(err, res) {
+		if(err) {
+			log.error('EVENT: DONE: Error: '.concat(util.inspect(err, false, 99), '\nStack: ', err.stack));
+		} else {
+			log.info('EVENT: DONE: Response: '.concat(util.inspect(res, false, 99)));
+		}
 	});
 
 });
